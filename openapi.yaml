@@ -1,0 +1,43 @@
+openapi: "3.0.0"
+info:
+  title: "TASK APP - SPRING BOOT"
+  version: "1.0.0"
+servers:
+  - url: "http://localhost:{port}"
+    description: "Localhost"
+    variables:
+      port:
+        enum:
+          - "8080"
+        default: "8080"
+components:
+  schemas:
+    requestBodyOrganizationCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: "Nome da organização"
+          example: "Empresa 1"
+        active:
+          type: string
+          enum:
+            - Y
+            - N
+paths:
+  /organization:
+    post:
+      description: "Cria uma nova organização"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/requestBodyOrganizationCreate"
+      responses:
+        201:
+          description: "Organização criada com sucesso"
+        400:
+          description: "Erro na requisição"
+        500:
+          description: "Erro interno"
