@@ -1,4 +1,4 @@
-package br.com.danilocarreiro.taskapp.http.resource;
+package br.com.danilocarreiro.taskapp.http.resources;
 
 import java.util.HashMap;
 import java.util.UUID;

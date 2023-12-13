@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.danilocarreiro.taskapp.business.domain.services.OrganizationService;
-import br.com.danilocarreiro.taskapp.http.request.organization.RequestBodyCreate;
-import br.com.danilocarreiro.taskapp.http.resource.OrganizationResource;
+import br.com.danilocarreiro.taskapp.http.requests.organization.RequestBodyCreate;
+import br.com.danilocarreiro.taskapp.http.resources.OrganizationResource;
 import jakarta.validation.Valid;
 
 @RestController
