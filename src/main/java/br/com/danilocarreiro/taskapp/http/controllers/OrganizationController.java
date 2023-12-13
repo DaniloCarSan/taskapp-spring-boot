@@ -7,23 +7,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.danilocarreiro.taskapp.business.domain.entities.Organization;
-import br.com.danilocarreiro.taskapp.business.infra.services.OrganizationService;
+import br.com.danilocarreiro.taskapp.business.domain.services.OrganizationService;
 import br.com.danilocarreiro.taskapp.http.request.organization.RequestBodyCreate;
+import br.com.danilocarreiro.taskapp.http.resource.OrganizationResource;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/organization")
+@RequestMapping(OrganizationController.PATH)
 public class OrganizationController {
+
+    public static final String PATH = "/organization";
 
     @Autowired
     private OrganizationService service;
 
     @PostMapping
-    public ResponseEntity<Organization> create(@Valid @RequestBody RequestBodyCreate body) {
+    public ResponseEntity<OrganizationResource> create(@Valid @RequestBody RequestBodyCreate body) {
+
         var organization = this.service.create(body.convertToOrganization());
 
-        return ResponseEntity.ok(organization);
+        return ResponseEntity.ok(OrganizationResource.from(organization));
     }
-    
+
 }
