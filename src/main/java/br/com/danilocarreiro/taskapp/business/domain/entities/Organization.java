@@ -17,7 +17,7 @@ import lombok.Setter;
 @Setter
 @Table(name = "organizations")
 public class Organization {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID Id;
@@ -30,6 +30,11 @@ public class Organization {
 
     public Organization() {
 
+    }
+
+    public void update(String name, ActiveStatus active) {
+        this.setName(name);
+        this.setActive(active);
     }
 
 }

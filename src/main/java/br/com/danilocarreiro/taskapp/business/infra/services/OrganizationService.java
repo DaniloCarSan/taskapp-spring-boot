@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.danilocarreiro.taskapp.business.domain.entities.Organization;
 import br.com.danilocarreiro.taskapp.business.domain.exceptions.OrganizationAlreadyExistsException;
+import br.com.danilocarreiro.taskapp.business.domain.exceptions.OrganizationNotFoundException;
 import br.com.danilocarreiro.taskapp.business.domain.repositories.OrganizationRepository;
 
 @Service
@@ -22,6 +23,22 @@ public class OrganizationService implements br.com.danilocarreiro.taskapp.busine
         }
 
         return repository.save(organization);
+    }
+
+    @Override
+    public Organization update(Organization newOrganization) {
+
+        if (this.repository.existsByNameAndIdNot(newOrganization.getName(), newOrganization.getId())) {
+            throw new OrganizationAlreadyExistsException(
+                    String.format("Organization with name ( %s ) already exists", newOrganization.getName()));
+        }
+
+        var organization = this.repository.findById(newOrganization.getId())
+                .orElseThrow(() -> new OrganizationNotFoundException("Organization not found"));
+
+        organization.update(newOrganization.getName(), newOrganization.getActive());
+
+        return this.repository.save(organization);
     }
 
 }

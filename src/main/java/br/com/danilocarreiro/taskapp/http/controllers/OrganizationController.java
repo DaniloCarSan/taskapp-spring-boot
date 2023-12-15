@@ -3,12 +3,14 @@ package br.com.danilocarreiro.taskapp.http.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.danilocarreiro.taskapp.business.domain.services.OrganizationService;
 import br.com.danilocarreiro.taskapp.http.requests.organization.RequestBodyCreate;
+import br.com.danilocarreiro.taskapp.http.requests.organization.RequestBodyUpdate;
 import br.com.danilocarreiro.taskapp.http.resources.OrganizationResource;
 import jakarta.validation.Valid;
 
@@ -25,6 +27,14 @@ public class OrganizationController {
     public ResponseEntity<OrganizationResource> create(@Valid @RequestBody RequestBodyCreate body) {
 
         var organization = this.service.create(body.convertToOrganization());
+
+        return ResponseEntity.ok(OrganizationResource.from(organization));
+    }
+
+    @PutMapping
+    public ResponseEntity<OrganizationResource> update(@Valid @RequestBody RequestBodyUpdate body) {
+
+        var organization = this.service.update(body.convertToOrganization());
 
         return ResponseEntity.ok(OrganizationResource.from(organization));
     }

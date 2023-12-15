@@ -10,4 +10,6 @@ import br.com.danilocarreiro.taskapp.business.domain.entities.Organization;
 @Repository
 public interface OrganizationRepository extends JpaRepository<Organization, UUID> {
     public boolean existsByName(String name);
+
+    public boolean existsByNameAndIdNot(String name, UUID id);
 }
