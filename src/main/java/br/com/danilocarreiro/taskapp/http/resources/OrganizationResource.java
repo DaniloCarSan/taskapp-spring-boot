@@ -31,9 +31,9 @@ public class OrganizationResource extends RepresentationModel<OrganizationResour
     }
 
     private void setLinks() {
-        this.add(Link.of(OrganizationController.PATH + this.id).withSelfRel());
-        this.add(Link.of(OrganizationController.PATH + this.id + "/activate").withRel("activate"));
-        this.add(Link.of(OrganizationController.PATH + this.id + "/deactivate").withRel("deactivate"));
+        this.add(Link.of(OrganizationController.PATH + '/' + this.id).withSelfRel());
+        this.add(Link.of(OrganizationController.PATH + '/' + this.id + "/activate").withRel("activate"));
+        this.add(Link.of(OrganizationController.PATH + '/' + this.id + "/deactivate").withRel("deactivate"));
     }
 
     public void addMeta(String key, Object value) {
