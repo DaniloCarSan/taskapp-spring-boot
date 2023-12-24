@@ -1,5 +1,7 @@
 package br.com.danilocarreiro.taskapp.infra.services;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,15 @@ public class OrganizationService implements br.com.danilocarreiro.taskapp.domain
         }
 
         return repository.save(organization);
+    }
+
+    @Override
+    public Organization getById(UUID id) {
+
+        var organization = this.repository.findById(id)
+                .orElseThrow(() -> new OrganizationNotFoundException("Organization not found"));
+
+        return organization;
     }
 
     @Override

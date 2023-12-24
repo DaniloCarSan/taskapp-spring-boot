@@ -38,6 +38,21 @@ components:
           enum:
             - Y
             - N
+    organization:
+      type: object
+      properties:
+        id:
+          type: string
+          description: "Id da organização"
+          format: uuid
+        name:
+          type: string
+          description: "Nome da organização"
+        active:
+          type: string
+          enum:
+            - Y
+            - N
 paths:
   /organization:
     post:
@@ -70,3 +85,20 @@ paths:
           description: "Erro na requisição"
         500:
           description: "Erro interno"
+  /organization/{id}:
+    get:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        201:
+          description: Organização obtida com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/organization"
+        404:
+          description: "Organização não encontrada"
