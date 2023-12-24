@@ -1,8 +1,8 @@
-package br.com.danilocarreiro.taskapp.business.domain.entities;
+package br.com.danilocarreiro.taskapp.domain.entities;
 
 import java.util.UUID;
 
-import br.com.danilocarreiro.taskapp.business.domain.OVs.ActiveStatus;
+import br.com.danilocarreiro.taskapp.domain.OVs.ActiveStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

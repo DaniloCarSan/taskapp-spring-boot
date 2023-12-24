@@ -1,9 +1,9 @@
-package br.com.danilocarreiro.taskapp.http.requests.organization;
+package br.com.danilocarreiro.taskapp.application.http.requests.organization;
 
 import org.springframework.beans.BeanUtils;
 
-import br.com.danilocarreiro.taskapp.business.domain.OVs.ActiveStatus;
-import br.com.danilocarreiro.taskapp.business.domain.entities.Organization;
+import br.com.danilocarreiro.taskapp.domain.OVs.ActiveStatus;
+import br.com.danilocarreiro.taskapp.domain.entities.Organization;
 import jakarta.validation.constraints.NotBlank;
 
 public record RequestBodyCreate(

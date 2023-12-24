@@ -1,4 +1,4 @@
-package br.com.danilocarreiro.taskapp.http.resources;
+package br.com.danilocarreiro.taskapp.application.http.resources;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -6,9 +6,9 @@ import java.util.UUID;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.RepresentationModel;
 
-import br.com.danilocarreiro.taskapp.business.domain.OVs.ActiveStatus;
-import br.com.danilocarreiro.taskapp.business.domain.entities.Organization;
-import br.com.danilocarreiro.taskapp.http.controllers.OrganizationController;
+import br.com.danilocarreiro.taskapp.application.http.controllers.OrganizationController;
+import br.com.danilocarreiro.taskapp.domain.OVs.ActiveStatus;
+import br.com.danilocarreiro.taskapp.domain.entities.Organization;
 import lombok.Getter;
 import lombok.Setter;
 

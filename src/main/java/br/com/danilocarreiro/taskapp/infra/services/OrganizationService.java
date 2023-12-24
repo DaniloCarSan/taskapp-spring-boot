@@ -1,15 +1,15 @@
-package br.com.danilocarreiro.taskapp.business.infra.services;
+package br.com.danilocarreiro.taskapp.infra.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.danilocarreiro.taskapp.business.domain.entities.Organization;
-import br.com.danilocarreiro.taskapp.business.domain.exceptions.OrganizationAlreadyExistsException;
-import br.com.danilocarreiro.taskapp.business.domain.exceptions.OrganizationNotFoundException;
-import br.com.danilocarreiro.taskapp.business.domain.repositories.OrganizationRepository;
+import br.com.danilocarreiro.taskapp.domain.entities.Organization;
+import br.com.danilocarreiro.taskapp.domain.exceptions.OrganizationAlreadyExistsException;
+import br.com.danilocarreiro.taskapp.domain.exceptions.OrganizationNotFoundException;
+import br.com.danilocarreiro.taskapp.domain.repositories.OrganizationRepository;
 
 @Service
-public class OrganizationService implements br.com.danilocarreiro.taskapp.business.domain.services.OrganizationService {
+public class OrganizationService implements br.com.danilocarreiro.taskapp.domain.services.OrganizationService {
 
     @Autowired
     private OrganizationRepository repository;

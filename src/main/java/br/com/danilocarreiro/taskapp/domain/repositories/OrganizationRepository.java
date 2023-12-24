@@ -1,11 +1,11 @@
-package br.com.danilocarreiro.taskapp.business.domain.repositories;
+package br.com.danilocarreiro.taskapp.domain.repositories;
 
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.danilocarreiro.taskapp.business.domain.entities.Organization;
+import br.com.danilocarreiro.taskapp.domain.entities.Organization;
 
 @Repository
 public interface OrganizationRepository extends JpaRepository<Organization, UUID> {

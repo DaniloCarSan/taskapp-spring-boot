@@ -1,4 +1,4 @@
-package br.com.danilocarreiro.taskapp.http.controllers;
+package br.com.danilocarreiro.taskapp.application.http.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.danilocarreiro.taskapp.business.domain.services.OrganizationService;
-import br.com.danilocarreiro.taskapp.http.requests.organization.RequestBodyCreate;
-import br.com.danilocarreiro.taskapp.http.requests.organization.RequestBodyUpdate;
-import br.com.danilocarreiro.taskapp.http.resources.OrganizationResource;
+import br.com.danilocarreiro.taskapp.application.http.requests.organization.RequestBodyCreate;
+import br.com.danilocarreiro.taskapp.application.http.requests.organization.RequestBodyUpdate;
+import br.com.danilocarreiro.taskapp.application.http.resources.OrganizationResource;
+import br.com.danilocarreiro.taskapp.domain.services.OrganizationService;
 import jakarta.validation.Valid;
 
 @RestController
