@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.danilocarreiro.taskapp.domain.entities.Organization;
 import br.com.danilocarreiro.taskapp.domain.exceptions.OrganizationAlreadyExistsException;
+import br.com.danilocarreiro.taskapp.domain.exceptions.OrganizationException;
 import br.com.danilocarreiro.taskapp.domain.exceptions.OrganizationNotFoundException;
 import br.com.danilocarreiro.taskapp.domain.repositories.OrganizationRepository;
 
@@ -23,6 +24,8 @@ public class OrganizationService implements br.com.danilocarreiro.taskapp.domain
             throw new OrganizationAlreadyExistsException(
                     String.format("Organization with name ( %s ) already exists", organization.getName()));
         }
+
+        organization.active();
 
         return repository.save(organization);
     }
@@ -46,6 +49,12 @@ public class OrganizationService implements br.com.danilocarreiro.taskapp.domain
 
         var organization = this.repository.findById(newOrganization.getId())
                 .orElseThrow(() -> new OrganizationNotFoundException("Organization not found"));
+
+        if (organization.getActiveStatus().isDeactive()) {
+            throw new OrganizationException("Organization deactiveted");
+        }
+
+        organization.setName(newOrganization.getName());
 
         return this.repository.save(organization);
     }

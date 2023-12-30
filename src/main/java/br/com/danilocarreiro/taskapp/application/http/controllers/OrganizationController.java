@@ -35,7 +35,7 @@ public class OrganizationController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<OrganizationResource> getMethodName(@PathVariable UUID id) {
+    public ResponseEntity<OrganizationResource> select(@PathVariable UUID id) {
         var organization = this.service.getById(id);
 
         return ResponseEntity.ok(OrganizationResource.from(organization));

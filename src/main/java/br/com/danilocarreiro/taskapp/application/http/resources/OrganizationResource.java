@@ -7,6 +7,7 @@ import org.springframework.hateoas.Link;
 import org.springframework.hateoas.RepresentationModel;
 
 import br.com.danilocarreiro.taskapp.application.http.controllers.OrganizationController;
+import br.com.danilocarreiro.taskapp.domain.OVs.ActiveStatus;
 import br.com.danilocarreiro.taskapp.domain.entities.Organization;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,6 +18,7 @@ public class OrganizationResource extends RepresentationModel<OrganizationResour
 
     private UUID id;
     private String name;
+    private ActiveStatus active;
 
     private HashMap<String, Object> meta = new HashMap<String, Object>();
 
@@ -24,16 +26,30 @@ public class OrganizationResource extends RepresentationModel<OrganizationResour
         var resource = new OrganizationResource();
         resource.setId(organization.getId());
         resource.setName(organization.getName());
+        resource.setActive(organization.getActiveStatus());
         resource.setLinks();
         return resource;
     }
 
     private void setLinks() {
         this.add(Link.of(OrganizationController.PATH + '/' + this.id).withSelfRel());
+        this.add(Link.of(OrganizationController.PATH + '/' + this.id + "/activate").withRel("activate"));
+        this.add(Link.of(OrganizationController.PATH + '/' + this.id + "/deactivate").withRel("deactivate"));
     }
 
     public void addMeta(String key, Object value) {
         this.meta.put(key, value);
+    }
+
+    public void setActive(ActiveStatus active) {
+        this.active = active;
+        this.addMeta("active", new HashMap<>() {
+            private static final long serialVersionUID = 1L;
+            {
+                put("value", active);
+                put("label", active.label());
+            }
+        });
     }
 
 }
