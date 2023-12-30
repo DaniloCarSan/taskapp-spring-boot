@@ -2,7 +2,6 @@ package br.com.danilocarreiro.taskapp.domain.entities;
 
 import java.util.UUID;
 
-import br.com.danilocarreiro.taskapp.domain.OVs.ActiveStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,16 +24,12 @@ public class Organization {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
-    private ActiveStatus active;
-
     public Organization() {
 
     }
 
-    public void update(String name, ActiveStatus active) {
+    public void update(String name) {
         this.setName(name);
-        this.setActive(active);
     }
 
 }

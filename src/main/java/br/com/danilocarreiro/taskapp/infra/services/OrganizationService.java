@@ -47,8 +47,6 @@ public class OrganizationService implements br.com.danilocarreiro.taskapp.domain
         var organization = this.repository.findById(newOrganization.getId())
                 .orElseThrow(() -> new OrganizationNotFoundException("Organization not found"));
 
-        organization.update(newOrganization.getName(), newOrganization.getActive());
-
         return this.repository.save(organization);
     }
 
